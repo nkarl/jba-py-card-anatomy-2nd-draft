@@ -4,42 +4,42 @@ from backend.menu import Menu
 
 # start a new session:
 def session():
-    session = True
-    while session is True:
+    this_session = True
+    while this_session is True:
         accounts = dict()       # list of accounts created for this session
-        interaction = Menu()    # start a new interactive api object
+        interact = Menu()    # start a new interactive api object
 
-        IN_MAIN_MENU = True
+        in_main_menu = True
         # while in main menu
-        while IN_MAIN_MENU:
-            u_input = interaction.main_ui()
+        while in_main_menu:
+            u_input = interact.main_ui()
 
             if u_input == '1':
-                u, accounts = interaction.main_create(accounts)
+                u, accounts = interact.main_create(accounts)
 
             elif u_input == '2':
                 is_logged, u = False, None
 
                 # loop back if incorrect id or pin
                 while not is_logged:
-                    is_logged, u = interaction.main_attempt_login(accounts)
+                    is_logged, u = interact.main_attempt_login(accounts)
 
                 # otherwise, log in:
                 else:
-                    IN_USER_MENU = True
+                    in_user_menu = True
                     # while logged in
-                    while IN_USER_MENU:
-                        u_input = interaction.user_ui()
+                    while in_user_menu:
+                        u_input = interact.user_ui()
                         if u_input == '1':
                             print(f'Balance: {u.balance}\n')
                         elif u_input == '2':
                             print('You have successfully logged out!\n')
-                            IN_USER_MENU = False
+                            in_user_menu = False
                         elif u_input == '0':
-                            interaction.user_exit()
+                            interact.user_exit()
 
             elif u_input == '0':
-                interaction.user_exit()
+                interact.user_exit()
 
 
 if __name__ == "__main__":

@@ -6,6 +6,9 @@ class Menu:
     """text display api for the session's menus
     """
 
+    def __init__(self):
+        pass
+
     def main_ui(self):
         """print main menu
         """
@@ -20,10 +23,9 @@ class Menu:
         return input()
 
 
-    def __display_created_account(self, u_id: str, u_pin: str):
+    @staticmethod
+    def __display_created_account(u_id: str, u_pin: str):
         """print created account info (id and pin)
-
-        :param u_id str: [newly created id] :param u_pin str: [newly created pin]
         """
         print(f'Your card has been created\nYour card number:\n{u_id}\nYour card PIN:\n{u_pin}')
 
@@ -31,7 +33,7 @@ class Menu:
     def main_create(self, acc_list: dict):
         """create a new account for the user
 
-        :param acc_list dict: [list of accounts created for this interactive session]
+        :param acc_list: list of accounts created for this interactive session
         """
         u = BankCard()      # create a new BankCard (i.e. new account)
         self.__display_created_account(u.id, u.pin)
@@ -46,8 +48,7 @@ class Menu:
     def main_attempt_login(self, acc_list: dict):
         """print an interactive state for each login attempt
 
-        :param acc_list dict: [collection of accounts created for this session]
-        :param u_acc BankCard: [the user account to check against the collection]
+        :param acc_list: [collection of accounts created for this session]
         """
         print('Enter your card number:')
         u_num = input()
@@ -63,10 +64,9 @@ class Menu:
             return True, acc_list[u_num]
 
 
-    def user_exit(self):
+    @staticmethod
+    def user_exit():
         """exit the session
         """
         print('Bye')
         exit()
-
-
