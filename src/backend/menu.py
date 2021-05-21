@@ -9,14 +9,16 @@ class Menu:
     def __init__(self):
         pass
 
-    def main_ui(self):
+    @staticmethod
+    def main_ui():
         """print main menu
         """
         print('1. Create an account\n2. Log into account\n0. Exit')
         return input()
 
 
-    def user_ui(self):
+    @staticmethod
+    def user_ui():
         """print user menu (required being logged in)
         """
         print('1. Balance\n2. Log out\n0. Exit')
@@ -45,10 +47,11 @@ class Menu:
         return u, acc_list
     
 
-    def main_attempt_login(self, acc_list: dict):
+    @staticmethod
+    def main_attempt_login(acc_list: dict):
         """print an interactive state for each login attempt
 
-        :param acc_list: [collection of accounts created for this session]
+        :param acc_list: collection of accounts created for this session
         """
         print('Enter your card number:')
         u_num = input()

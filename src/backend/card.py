@@ -16,7 +16,8 @@ class BankCard:
         self.balance = 0
 
 
-    def __generate_checksum(self, sequence: list):
+    @staticmethod
+    def __generate_checksum(sequence: list):
         """generate a checksum for a given sequence
 
         :param sequence str: the sequence of digits
@@ -28,11 +29,11 @@ class BankCard:
         cc = list(map(lambda x: x - 9 if x > 9 else x, bb))
         # fourth, take the sum of the sequence
         dd = sum(cc)
-        # finally, find the checksum that satifies: (dd + checksum) % 10 == 0 
+        # finally, find the checksum that satisfies: (dd + checksum) % 10 == 0
         ee = dd
         while ee % 10 != 0:
             ee += 1
-        return (ee - dd)
+        return ee - dd
 
 
     def __generate_card_id(self):
