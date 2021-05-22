@@ -40,8 +40,7 @@ def session(this_session: bool = True):
             else:  # otherwise just loop back
                 continue
     else:
-        print(f"\nWarning: session not started.\n")
-        print(f"<this_session == {this_session}>, when supposed to be <True>. Perhaps used as an import?")
+        print(f"\nWarning: session not started because module was imported.\n")
 
 
 # only execute when this module is run directly
